@@ -4,6 +4,7 @@ import styled from '@emotion/styled'
 import { Button } from '@repo/ui/Button/Button.tsx'
 import { useRouter } from 'next/navigation'
 import { ImageDataType } from '../../../lib/api/query/result/dto'
+import useMediaQuery from '../../../hooks/useMediaQuery'
 
 interface IInformationProps {
   data: ImageDataType | null
@@ -14,6 +15,8 @@ const Information = ({ data }: IInformationProps) => {
   const onClickPrevButton = () => {
     router.push('/')
   }
+  const isMobile = useMediaQuery('(max-width: 767px)')
+
   return (
     <InformationContainer>
       <InformationBox>
@@ -47,7 +50,12 @@ const Information = ({ data }: IInformationProps) => {
         </InformationItem>
       </InformationBox>
       <ButtonContainer>
-        <Button onClick={onClickPrevButton}>이전</Button>
+        <Button
+          onClick={onClickPrevButton}
+          full={isMobile ? true : false}
+          size={isMobile ? 'base' : 'sm'}>
+          이전
+        </Button>
       </ButtonContainer>
     </InformationContainer>
   )

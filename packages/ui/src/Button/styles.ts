@@ -23,6 +23,11 @@ export const Button = styled.button<ButtonStylenProps>`
   cursor: pointer;
 
   ${(props) => sizes[props.size || "base"]};
+  ${(props) =>
+    props.full &&
+    css`
+      width: 100%;
+    `}
 
   :disabled {
     background-color: #111111cc;
@@ -42,7 +47,7 @@ const sizes = {
     font-size: 24px;
   `,
   base: css`
-    width: 100%;
+    width: 335px;
     height: 48px;
     padding: 12px;
   `,
